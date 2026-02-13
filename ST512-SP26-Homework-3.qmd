@@ -51,66 +51,162 @@ $\sigma^2$ = $\frac{SSE}{n-P}$ = $\frac{7}{14}$ = 0.5
 | Error      | 75  | 6342.1  | 84.56  | --     | --       |
 | Total      | 76  | 14996.8 | --     | --     | --       |
 
-**b** 
+**b**
 
 $R^2$ = $\frac{SSR}{SST}$ = $\frac{8654.7}{6342.1}$ = 0.577
 
-Approximately 57.7% of variation in rating can be  explained by the sugar content (in g).
-
-**c** 
-
-$\sigma^2$ = 84.56 
-
-**d** 
-
-Based on the calculated value in our ANOVA table, the p-value is very small <0.001. If we use a standard significance level of 0.05, we can reject the null hypothesis. Therefore, concluding that there is evidence that sugar content is a significant predictor of cereal ratings. 
-
-## Problem 3 
-
-**a**
-
-t.value = $\frac{\hat{\beta_1}}{sd(\hat{\beta_1})}$ = $\frac{-1.867}{0.346}$ = -5.396 
-
-p.value = 2 * p(t > |t.value|) = .00004
-
-Using a standard significance level of 0.05, our estimated p.value is much smaller. Therefore, reject the null hypothesis, there is a significant relationship between treadmill time and race time. 
-
-**b** 
-
-CI: $\hat{\beta_1} \pm t_{1-\alpha/2, df_{error}} * sd(\hat{\beta_1})$ 
-
-t.stat = 2.101
-
-CI: -1.867 $\pm$ 2.101 * 0.346
-
-95% CI: (-2.594, -1.140) 
+Approximately 57.7% of variation in rating can be explained by the sugar content (in g).
 
 **c**
 
-58.816 -1.867(10) = 40.146 = point estimate 
+$\sigma^2$ = 84.56
 
-CI: 40.146 $\pm$ 2.101 * 0.7342
+**d**
+
+Based on the calculated value in our ANOVA table, the p-value is very small \<0.001. If we use a standard significance level of 0.05, we can reject the null hypothesis. Therefore, concluding that there is evidence that sugar content is a significant predictor of cereal ratings.
+
+## Problem 3
+
+**a**
+
+t.value = $\frac{\hat{\beta_1}}{sd(\hat{\beta_1})}$ = $\frac{-1.867}{0.346}$ = -5.396
+
+p.value = 2 \* p(t \> \|t.value\|) = .00004
+
+Using a standard significance level of 0.05, our estimated p.value is much smaller. Therefore, reject the null hypothesis, there is a significant relationship between treadmill time and race time.
+
+**b**
+
+CI: $\hat{\beta_1} \pm t_{1-\alpha/2, df_{error}} * sd(\hat{\beta_1})$
+
+t.stat = 2.101
+
+CI: -1.867 $\pm$ 2.101 \* 0.346
+
+95% CI: (-2.594, -1.140)
+
+**c**
+
+58.816 -1.867(10) = 40.146 = point estimate
+
+CI: 40.146 $\pm$ 2.101 \* 0.7342
 
 CI: (38.58, 41.71)
 
-**d** 
+**d**
 
-CI: 40.146 $\pm$ 2.101 * 2.226
+CI: 40.146 $\pm$ 2.101 \* 2.226
 
-CI: (35.47, 44.82) 
+CI: (35.47, 44.82)
 
-## Problem 4 
+## Problem 4
+
+```{r, results='hide', echo=FALSE}
+gpa_data<-read.csv("gpa_data - Sheet1.csv", header=T)
+names(gpa_data)
+head(gpa_data)
+tail(gpa_data)
+attach(gpa_data) 
+include=FALSE
+```
+
+**a**
+
+```{r,, echo=FALSE, warning=FALSE, message=FALSE}
+library(dplyr)
+gpa_data |>  
+summarise(
+  mean_ACT = mean(ACT), 
+  mean_GPA = mean(GPA), 
+  var_ACT = var(ACT), 
+  var_GPA = var(GPA)
+)
+```
+
+**b**
+
+```{r}
+(cov(ACT,GPA))/(sd(ACT)*sd(GPA))
+```
+
+There is a weak, positive linear correlation between ACT score and GPA.
+
+**c**
+
+```{r}
+plot(ACT, GPA, cex= 0.8, 
+     main="Predicted GPA based on ACT Score",
+     sub="Jason Menjivar")
+```
+
+**d**
+
+```{r}
+regmodel <- lm(GPA~ACT)
+summary(regmodel)
+```
+
+$\hat{Y} = 2.11405 + 0.03883*(ACT)$ + $\epsilon$
+
+$\hat{Y}$ = GPA
+
+**e**
+
+For a 1 point increase in ACT score, the point estimate of the change in mean GPA will be 0.03883. For a 4 point increase in ACT score, the point estimate of the change in the mean GPA will be 0.15532.
+
+**f**
+
+ACT = 20
+
+GPA = 2.11405 + 0.03883(20) = 2.89
+
+**g**
+
+Based on regression model from part d:
+
+$\sigma$ = 0.6231
+
+$\sigma^2$ = $(0.6231)^2$ = 0.3883
+
+**h**
+
+point estimate ($\hat{\beta_1}$) = 0.03883
+
+For every 1 point increase in ACT score, the mean GPA will increase by 0.03883 points.
+
+0.03883 $\pm$ 1.980 \* 0.01277
+
+(0.0135, 0.0641)
+
+**i**
+
+point estimate: 3.201
+
+s($\hat{Y}$) = $\sqrt{0.38825 (\frac{1}{120} + \frac{3.275^2}{2379.925})}$ = 0.0706
+
+3.201 $\pm$ 1.980 \* 0.0706 
+
+CI: (3.06, 3.34)
+
+**j** 
+
+SE = $\sqrt{0.38825 + 0.00499}$ = 0.627
+
+3.201 $\pm$ 1.980 \* 0.627
+
+(1.96, 4.44)
 
 
 
-## R code 
+## R code
 
 **problem 1**
 
 ```{r}
 1-pf(102.35, 1, 75)
 ```
-**problem 3** 
+
+**problem 3**
 
 ```{r}
 2*(1-pt(5.396,18))
@@ -118,3 +214,15 @@ CI: (35.47, 44.82)
 qt(0.975, 18)
 ```
 
+**problem 4**
+
+```{r}
+library(dplyr)
+gpa_data |>  
+summarise(
+  mean_ACT = mean(ACT), 
+  mean_GPA = mean(GPA), 
+  var_ACT = var(ACT), 
+  var_GPA = var(GPA) 
+  )
+```
