@@ -67,6 +67,40 @@ Based on the calculated value in our ANOVA table, the p-value is very small <0.0
 
 ## Problem 3 
 
+**a**
+
+t.value = $\frac{\hat{\beta_1}}{sd(\hat{\beta_1})}$ = $\frac{-1.867}{0.346}$ = -5.396 
+
+p.value = 2 * p(t > |t.value|) = .00004
+
+Using a standard significance level of 0.05, our estimated p.value is much smaller. Therefore, reject the null hypothesis, there is a significant relationship between treadmill time and race time. 
+
+**b** 
+
+CI: $\hat{\beta_1} \pm t_{1-\alpha/2, df_{error}} * sd(\hat{\beta_1})$ 
+
+t.stat = 2.101
+
+CI: -1.867 $\pm$ 2.101 * 0.346
+
+95% CI: (-2.594, -1.140) 
+
+**c**
+
+58.816 -1.867(10) = 40.146 = point estimate 
+
+CI: 40.146 $\pm$ 2.101 * 0.7342
+
+CI: (38.58, 41.71)
+
+**d** 
+
+CI: 40.146 $\pm$ 2.101 * 2.226
+
+CI: (35.47, 44.82) 
+
+## Problem 4 
+
 
 
 ## R code 
@@ -76,3 +110,11 @@ Based on the calculated value in our ANOVA table, the p-value is very small <0.0
 ```{r}
 1-pf(102.35, 1, 75)
 ```
+**problem 3** 
+
+```{r}
+2*(1-pt(5.396,18))
+
+qt(0.975, 18)
+```
+
