@@ -40,3 +40,39 @@ P = 2 (2 parameters, slope and intercept)
 
 $\sigma^2$ = $\frac{SSE}{n-P}$ = $\frac{7}{14}$ = 0.5
 
+## Problem 2
+
+**a**
+
+|            |     |         |        |        |          |
+|------------|-----|---------|--------|--------|----------|
+| Source     | DF  | SS      | MS     | F      | P        |
+| Regression | 1   | 8654.7  | 8654.7 | 102.35 | 1.11e-15 |
+| Error      | 75  | 6342.1  | 84.56  | --     | --       |
+| Total      | 76  | 14996.8 | --     | --     | --       |
+
+**b** 
+
+$R^2$ = $\frac{SSR}{SST}$ = $\frac{8654.7}{6342.1}$ = 0.577
+
+Approximately 57.7% of variation in rating can be  explained by the sugar content (in g).
+
+**c** 
+
+$\sigma^2$ = 84.56 
+
+**d** 
+
+Based on the calculated value in our ANOVA table, the p-value is very small <0.001. If we use a standard significance level of 0.05, we can reject the null hypothesis. Therefore, concluding that there is evidence that sugar content is a significant predictor of cereal ratings. 
+
+## Problem 3 
+
+
+
+## R code 
+
+**problem 1**
+
+```{r}
+1-pf(102.35, 1, 75)
+```
