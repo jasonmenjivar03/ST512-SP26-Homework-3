@@ -196,7 +196,41 @@ SE = $\sqrt{0.38825 + 0.00499}$ = 0.627
 
 (1.96, 4.44)
 
+## Problem 5 
 
+```{r, echo=FALSE, message=FALSE}
+age <- c(3, 4, 5, 6, 3, 4, 5, 6, 3, 4, 5, 6, 3, 4, 5, 6, 3, 4,
+5, 6, 3, 4, 5, 6, 6)
+weight <- c(2.61, 2.67, 2.98, 3.98, 2.87, 3.41, 3.49, 4.03,
+3.41, 2.81, 3.24, 3.75, 3.18, 3.13, 3.98, 4.55, 3.41, 3.35,
+3.75, 3.83, 3.18, 3.52, 3.49, 3.81, 4.03)
+systolic_BP <- c(80, 90, 96, 102, 81, 96, 99, 110, 88, 90, 100,
+102, 86, 93, 101, 103, 86, 91, 100, 105, 84, 91, 95, 104, 107)
+# Create a data frame
+data <- data.frame(age, weight, systolic_BP)
+```
+
+**a**
+
+Y = $\beta_o + \beta_1(age) + \beta_2(weight) + \epsilon$ 
+
+**b**
+
+MLR model at the end of doc. 
+
+$\hat{Y} = 57.2644 + 5.8041*(age) + 3.3162*(weight) + \epsilon$ 
+
+**c**
+
+$\hat{e}$ = 2.454 
+
+**d**
+
+For every 1 unit increase in weight, the systolic BP will increase by 3.3162 units. 
+
+**e**
+
+Yes, the hypothesis can be rejected. Based on our MLR model, the p-value is 8.69e-13. This is much smaller than $\alpha$ = 0.01, thus we would reject the null hypothesis. 
 
 ## R code
 
@@ -226,3 +260,22 @@ summarise(
   var_GPA = var(GPA) 
   )
 ```
+
+**problem 5** 
+
+```{r}
+age <- c(3, 4, 5, 6, 3, 4, 5, 6, 3, 4, 5, 6, 3, 4, 5, 6, 3, 4,
+5, 6, 3, 4, 5, 6, 6)
+weight <- c(2.61, 2.67, 2.98, 3.98, 2.87, 3.41, 3.49, 4.03,
+3.41, 2.81, 3.24, 3.75, 3.18, 3.13, 3.98, 4.55, 3.41, 3.35,
+3.75, 3.83, 3.18, 3.52, 3.49, 3.81, 4.03)
+systolic_BP <- c(80, 90, 96, 102, 81, 96, 99, 110, 88, 90, 100,
+102, 86, 93, 101, 103, 86, 91, 100, 105, 84, 91, 95, 104, 107)
+# Create a data frame
+data <- data.frame(age, weight, systolic_BP)
+```
+
+```{r}
+summary(lm(systolic_BP ~ age + weight))
+```
+
