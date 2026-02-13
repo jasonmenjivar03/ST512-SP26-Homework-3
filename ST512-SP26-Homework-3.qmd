@@ -4,3 +4,39 @@ format: pdf
 author: "Jason Menjivar"
 ---
 
+## Problem 1
+
+**a**
+
+$\hat{y}$ = 25 - 0.5(7) = 21.5
+
+**b**
+
+$\hat{y}$ = 25 - 0.5(3) = 23.5
+
+e = y - $\bar{y}$ = 30 - 23.5 = 6.5
+
+The residual has a value of 6.5. Given that the residual is positive, the point will lie above the regression line. This is because our observed value of 30 is greater than the predicted value of 23.5.
+
+**c**
+
+In our model or fitted equation, the slope is -0.5. Thus, for every 1 unit increase in x, $\hat{y}$ will decrease by 0.5. If x is increasing by 3 units, this would then mean that $\hat{y}$ will decrease by 1.5 units.
+
+-0.5(3) = -1.5
+
+**d**
+
+$\hat{y}$ = 25 - 0.5(6) = 22
+
+Based on the fitted equation, the predicted value is 22. However, this is only a **predicted** value, not an actual observed value. There is random error associated with the model, thus the actual observed test score could differ from 22.
+
+**e**
+
+SSE = 7
+
+n = 16
+
+P = 2 (2 parameters, slope and intercept)
+
+$\sigma^2$ = $\frac{SSE}{n-P}$ = $\frac{7}{14}$ = 0.5
+
