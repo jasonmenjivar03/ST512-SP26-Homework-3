@@ -1,0 +1,6 @@
+---
+title: "ST512-SP26-Homework-3"
+format: pdf
+author: "Jason Menjivar"
+---
+
